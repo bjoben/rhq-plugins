@@ -2,7 +2,7 @@
 
 <plugin name="ActiveMQ"
         displayName="ActiveMQ JMX Plugin"
-        version="1.0.1"
+        version="1.0.5"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="urn:xmlns:rhq-plugin"
         xmlns:c="urn:xmlns:rhq-configuration">
@@ -88,15 +88,50 @@
               defaultInterval="30000"
               description="Number of messages in the destination which are yet to be consumed."/>
 
-      <metric property="AverageEnqueueTime"
+       <metric property="ProducerCount"
+               displayName="Producer Count"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Number of producers publishing to this destination."/>
+
+       <metric property="ConsumerCount"
+               displayName="Consumer Count"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Number of consumers subscribed to this destination."/>
+
+       <metric property="AverageEnqueueTime"
               displayName="Average Enqueue Time"
               defaultOn="true"
               displayType="summary"
               defaultInterval="30000"
               description="Average time a message has been held this destination."/>
 
+       <metric property="MaxEnqueueTime"
+               displayName="Max Enqueue Time"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="The longest time a message has been held this destination."/>
 
-      <metric property="DequeueCount"
+       <metric property="DispatchCount"
+               displayName="Dispatch Count"
+               defaultOn="true"
+               displayType="summary"
+               measurementType="trendsup"
+               defaultInterval="30000"
+               description="Number of messages that have been delivered (but potentially not acknowledged) to consumers."/>
+
+       <metric property="InFlightCount"
+               displayName="In flight Count"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Number of messages that have been dispatched to, but not acknowledged by, consumers."/>
+
+       <metric property="DequeueCount"
               displayName="Dequeue Count"
               defaultOn="true"
               displayType="summary"
@@ -126,6 +161,13 @@
               displayType="summary"
               defaultInterval="30000"
               description="Percent of memory limit used"/>
+
+       <metric property="CursorPercentUsage"
+               displayName="Cursor Percent Usage"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Percent of cursor limit used"/>
 
    </service>
 
@@ -154,15 +196,50 @@
               defaultInterval="30000"
               description="Number of messages in the destination which are yet to be consumed."/>
 
-      <metric property="AverageEnqueueTime"
+       <metric property="ProducerCount"
+               displayName="Producer Count"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Number of producers publishing to this destination."/>
+
+       <metric property="ConsumerCount"
+               displayName="Consumer Count"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Number of consumers subscribed to this destination."/>
+
+       <metric property="AverageEnqueueTime"
               displayName="Average Enqueue Time"
               defaultOn="true"
               displayType="summary"
               defaultInterval="30000"
               description="Average time a message has been held this destination."/>
 
+       <metric property="MaxEnqueueTime"
+               displayName="Max Enqueue Time"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="The longest time a message has been held this destination."/>
 
-      <metric property="DequeueCount"
+       <metric property="DispatchCount"
+               displayName="Dispatch Count"
+               defaultOn="true"
+               displayType="summary"
+               measurementType="trendsup"
+               defaultInterval="30000"
+               description="Number of messages that have been delivered (but potentially not acknowledged) to consumers."/>
+
+       <metric property="InFlightCount"
+               displayName="In flight Count"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Number of messages that have been dispatched to, but not acknowledged by, consumers."/>
+
+       <metric property="DequeueCount"
               displayName="Dequeue Count"
               defaultOn="true"
               displayType="summary"
@@ -192,6 +269,13 @@
               displayType="summary"
               defaultInterval="30000"
               description="Percent of memory limit used"/>
+
+       <metric property="CursorPercentUsage"
+               displayName="Cursor Percent Usage"
+               defaultOn="true"
+               displayType="summary"
+               defaultInterval="30000"
+               description="Percent of cursor limit used"/>
 
    </service>
 
