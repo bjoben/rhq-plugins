@@ -2,7 +2,7 @@
 
 <plugin name="ActiveMQ"
         displayName="ActiveMQ JMX Plugin"
-        version="1.0.0"
+        version="1.0.1"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="urn:xmlns:rhq-plugin"
         xmlns:c="urn:xmlns:rhq-configuration">
@@ -20,7 +20,7 @@
 
       <plugin-configuration>
          <c:simple-property name="objectName" readOnly="true" default="org.apache.activemq:BrokerName=%brokerName%,Type=Broker" />
-	 <c:simple-property name="nameTemplate" default="{brokerName}"/>
+	     <c:simple-property name="nameTemplate" default="{brokerName}"/>
          <c:simple-property name="brokerName" type="string" description="The broker name"/>
          <c:simple-property name="descriptionTemplate" default="JMX Broker Object"/>
       </plugin-configuration>
@@ -40,7 +40,7 @@
               description="Number of messages unaknowledged on the broker"/>
 
       <metric property="MemoryPercentUsage"
-              displayName="Meomory Percent Usage"
+              displayName="Memory Percent Usage"
               defaultOn="true"
               displayType="summary"
               defaultInterval="30000"
@@ -100,6 +100,7 @@
               displayName="Dequeue Count"
               defaultOn="true"
               displayType="summary"
+              measurementType="trendsup"
               defaultInterval="30000"
               description="Number of messages that have been acknowledged and removed from destination."/>
 
@@ -107,6 +108,7 @@
               displayName="Enqueue Count"
               defaultOn="true"
               displayType="summary"
+              measurementType="trendsup"
               defaultInterval="30000"
               description="Number of messages that have been sent to the destination."/>
 
@@ -114,11 +116,12 @@
               displayName="Expired Count"
               defaultOn="true"
               displayType="summary"
+              measurementType="trendsup"
               defaultInterval="30000"
               description="AverageNumber of messages that have been expired."/>
 
       <metric property="MemoryPercentUsage"
-              displayName="Meomory Percent Usage"
+              displayName="Memory Percent Usage"
               defaultOn="true"
               displayType="summary"
               defaultInterval="30000"
@@ -163,6 +166,7 @@
               displayName="Dequeue Count"
               defaultOn="true"
               displayType="summary"
+              measurementType="trendsup"
               defaultInterval="30000"
               description="Number of messages that have been acknowledged and removed from destination."/>
 
@@ -170,6 +174,7 @@
               displayName="Enqueue Count"
               defaultOn="true"
               displayType="summary"
+              measurementType="trendsup"
               defaultInterval="30000"
               description="Number of messages that have been sent to the destination."/>
 
@@ -177,11 +182,12 @@
               displayName="Expired Count"
               defaultOn="true"
               displayType="summary"
+              measurementType="trendsup"
               defaultInterval="30000"
               description="AverageNumber of messages that have been expired."/>
 
       <metric property="MemoryPercentUsage"
-              displayName="Meomory Percent Usage"
+              displayName="Memory Percent Usage"
               defaultOn="true"
               displayType="summary"
               defaultInterval="30000"
