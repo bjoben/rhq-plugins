@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<plugin name="Camel"
+        displayName="Camel JMX Plugin"
+        version="1.0.5"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="urn:xmlns:rhq-plugin"
+        xmlns:c="urn:xmlns:rhq-configuration">
+
+   <depends plugin="JMX" useClasses="true"/>
+
+   <service name="Camel Context"
+            description="Camel Context"
+            discovery="org.rhq.plugins.jmx.MBeanResourceDiscoveryComponent"
+            class="org.rhq.plugins.jmx.MBeanResourceComponent">
+
+      <runs-inside>
+         <parent-resource-type name="JMX Server" plugin="JMX"/>
+      </runs-inside>
+
+      <plugin-configuration>
+          <c:simple-property name="objectName" readOnly="true" default="org.apache.camel:context=%camelContext%,type=context,name=%contextName%" />
+          <c:simple-property name="nameTemplate" default="{camelContext}"/>
+          <c:simple-property name="camelContext" type="string" description="Camel context"/>
+          <c:simple-property name="contextName" type="string" description="Context name"/>
+          <c:simple-property name="descriptionTemplate" default="Camel Context JMX Object"/>
+      </plugin-configuration>
+
+      <metric property="ExchangesCompleted"
+              displayName="Exchanges Completed"
+              defaultOn="true"
+              displayType="summary"
+              measurementType="trendsup"
+              defaultInterval="30000"
+              description="Number of completed exchanges"/>
+
+      <metric property="ExchangesTotal"
+              displayName="Exchanges Total"
+              defaultOn="true"
+              displayType="summary"
+              measurementType="trendsup"
+              defaultInterval="30000"
+              description="Total number of exchanges"/>
+
+      <metric property="ExchangesFailed"
+              displayName="Exchanges Failed"
+              defaultOn="true"
+              displayType="summary"
+              measurementType="trendsup"
+              defaultInterval="30000"
+              description="Number of failed exchanges"/>
+
+      <metric property="InflightExchanges"
+              displayName="Inflight Exchanges"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              description="Current number of inflight Exchanges"/>
+
+      <metric property="LastProcessingTime"
+              displayName="Last Processing Time"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+	          units="milliseconds"
+              description="Last Processing Time [milliseconds]"/>
+
+      <metric property="MeanProcessingTime"
+              displayName="Mean Processing Time"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+	          units="milliseconds"
+              description="Mean Processing Time [milliseconds]"/>
+
+      <metric property="Load01"
+              displayName="Load 1 Minute"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              dataType="trait"
+              description="Average load over the last minute"/>
+
+      <metric property="Load05"
+              displayName="Load 5 Minute"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              dataType="trait"
+              description="Average load over the last 5 minutes"/>
+
+      <metric property="Load15"
+              displayName="Load 15 Minute"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              dataType="trait"
+              description="Average load over the last 15 minutes"/>
+
+      <metric property="Redeliveries"
+              displayName="Internal Redeliveries"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              description="Number of redeliveries (internal only)"/>
+
+      <metric property="ExternalRedeliveries"
+              displayName="External Redeliveries"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              description="Number of external initiated redeliveries (such as from JMS broker)"/>
+
+      <metric property="CamelVersion"
+              displayName="Camel Version"
+              defaultOn="true"
+              displayType="summary"
+	          dataType="trait"
+              defaultInterval="1800000"
+              description="Camel Version"/>
+
+      <metric property="Uptime"
+              displayName="Uptime"
+              defaultOn="true"
+              displayType="summary"
+	          dataType="trait"
+              defaultInterval="1800000"
+              description="Uptime"/>
+
+
+   </service>
+
+
+
+   <service name="Camel Route"
+            description="Camel Route"
+            discovery="org.rhq.plugins.jmx.MBeanResourceDiscoveryComponent"
+            class="org.rhq.plugins.jmx.MBeanResourceComponent">
+
+      <runs-inside>
+         <parent-resource-type name="JMX Server" plugin="JMX"/>
+      </runs-inside>
+
+      <plugin-configuration>
+          <c:simple-property name="objectName" readOnly="true" default="org.apache.camel:context=%camelContext%,type=routes,name=%routeName%" />
+          <c:simple-property name="nameTemplate" default="{camelContext}/{routeName}"/>
+          <c:simple-property name="camelContext" type="string" description="Camel context"/>
+          <c:simple-property name="routeName" type="string" description="Route name"/>
+          <c:simple-property name="descriptionTemplate" default="Camel Route JMX Object"/>
+      </plugin-configuration>
+
+      <metric property="ExchangesCompleted"
+              displayName="Exchanges Completed"
+              defaultOn="true"
+              displayType="summary"
+              measurementType="trendsup"
+              defaultInterval="30000"
+              description="Number of completed exchanges"/>
+
+      <metric property="ExchangesTotal"
+              displayName="Exchanges Total"
+              defaultOn="true"
+              displayType="summary"
+              measurementType="trendsup"
+              defaultInterval="30000"
+              description="Total number of exchanges"/>
+
+      <metric property="ExchangesFailed"
+              displayName="Exchanges Failed"
+              defaultOn="true"
+              displayType="summary"
+              measurementType="trendsup"
+              defaultInterval="30000"
+              description="Number of failed exchanges"/>
+
+      <metric property="InflightExchanges"
+              displayName="Inflight Exchanges"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              description="Current number of inflight Exchanges"/>
+
+      <metric property="LastProcessingTime"
+              displayName="Last Processing Time"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+	          units="milliseconds"
+              description="Last Processing Time [milliseconds]"/>
+
+      <metric property="MeanProcessingTime"
+              displayName="Mean Processing Time"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+	          units="milliseconds"
+              description="Mean Processing Time [milliseconds]"/>
+
+      <metric property="Load01"
+              displayName="Load 1 Minute"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              dataType="trait"
+              description="Average load over the last minute"/>
+
+      <metric property="Load05"
+              displayName="Load 5 Minute"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              dataType="trait"
+              description="Average load over the last 5 minutes"/>
+
+      <metric property="Load15"
+              displayName="Load 15 Minute"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              dataType="trait"
+              description="Average load over the last 15 minutes"/>
+
+      <metric property="Redeliveries"
+              displayName="Internal Redeliveries"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              description="Number of redeliveries (internal only)"/>
+
+      <metric property="ExternalRedeliveries"
+              displayName="External Redeliveries"
+              defaultOn="true"
+              displayType="summary"
+              defaultInterval="30000"
+              description="Number of external initiated redeliveries (such as from JMS broker)"/>
+
+      <metric property="CamelVersion"
+              displayName="Camel Version"
+              defaultOn="true"
+              displayType="summary"
+	          dataType="trait"
+              defaultInterval="1800000"
+              description="Camel Version"/>
+
+      <metric property="Uptime"
+              displayName="Uptime"
+              defaultOn="true"
+              displayType="summary"
+	          dataType="trait"
+              defaultInterval="1800000"
+              description="Uptime"/>
+
+
+   </service>
+
+
+
+</plugin>
